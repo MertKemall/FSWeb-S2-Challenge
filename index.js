@@ -99,13 +99,17 @@ function cumleKur(
 
 /* (Oto test yok) cumleKur fonksiyonuna yalnızca 1 parametre göndererek "Hello World!" stringini elde edin, 
 sonucu konsolde gözlemleyin */
+console.log(cumleKur("Hello World!"))
 
 /* (Oto test yok) cumleKur fonksiyonuna yalnızca 2 parametre göndererek "Hello World!" stringini elde edin, 
 sonucu konsolde gözlemleyin */
+console.log(cumleKur("Hello ","World! "))
 
 /* (Oto test var) cumleKur fonksiyonuna 5 parametre göndererek "Ben iyi bir yazılımcı olacağım!" stringini 
 elde edin, sonucu `bircumle` değişkenine atayın ve konsolde gözlemleyin */
 var bircumle;
+bircumle=cumleKur('Ben', ' iyi', ' bir', ' yazılımcı', ' olacağım!')
+console.log(bircumle)
 
 /* kodlar buraya */
 
@@ -128,8 +132,10 @@ var bircumle;
 			5. Oluşturulan yeni dizi döndürülecek.
 	*/
 
-function cumlelereDonustur(/* kodlar buraya */) {
-  /* kodlar buraya */
+function cumlelereDonustur(cumlelerArr,bosEleman=",") {
+let newDizi=[]
+newDizi=cumlelerArr.map(cumle=>cumle.join(bosEleman))
+return newDizi
 }
 
 /* GÖREV 2:
@@ -145,9 +151,13 @@ function cumlelereDonustur(/* kodlar buraya */) {
 			6. Oluşturulan paragraf döndürülecek
 	*/
 
-function paragrafOlustur(/* kodlar buraya */) {
-  /* kodlar buraya */
-}
+  function paragrafOlustur(cumlelerArr, cumleKur, cumlelereDonustur) {
+   let yeniDizi=cumlelereDonustur(cumlelerArr," ")
+   let newDizi=cumleKur(yeniDizi[1],yeniDizi[3],yeniDizi[5],yeniDizi[7],yeniDizi[9])
+    return  newDizi
+  }
+  
+
 
 /* 	GÖREV 3:
 		Yukarıda isimleri sebzeler ve meyveler olan 2 dizi bulunmaktadır. Bu dizileri kullanarak aşağıdaki görevleri tamamlayın.
@@ -155,6 +165,8 @@ function paragrafOlustur(/* kodlar buraya */) {
  */
 //3a çözümü
 /* kodlar buraya */
+meyveler.pop();
+meyveler.shift();
 
 /* 			3b.  Bir tavşan ve bir kirpi arkadaşlar sebzeler dizimizin peşine düştü. Tavşan => 🐇 , Kirpi=> 🦔 , 
 Tavşanla kirpi sebzeleri ele geçirmek için bir plan kurdular. Tavşan diziye önden saldıracak, kirpi ise 
@@ -163,6 +175,8 @@ Kirpiyi dizinin son elemanına ekleyin 🦔
  */
 //3b çözümü
 /* kodlar buraya */
+sebzeler.push('🦔')
+sebzeler.unshift('🐇')
 
 /* 			3c. manav isminde bir dizi oluşturun.`meyveler` dizisi ilk elemanlara, `sebzeler` dizisi son 
 elemanlara denk gelecek şekilde, iki diziyi birleştirip sonucu manav dizisine aktarın. (.concat metodu)
@@ -171,11 +185,12 @@ elemanlara denk gelecek şekilde, iki diziyi birleştirip sonucu manav dizisine 
 /* kodlar buraya */
 
 var manav;
+manav=meyveler.concat(sebzeler)
 
 /* 	GÖREV 4:
 		Yeni kurulmuş bir mesajlaşma startup firması atılan mesajları emojilerle zenginleştirmek istiyor. 
     Bunun için emojiler adında bir nesne tanımlamışlar. Kullanıcının gönderdiği mesaj stringi içinde 
-    emojiler nesnesinin anahtarı(index) bulunuyorsa, bu işareti otomatik olarak anahtara ait değerde 
+    emojiler nesnesinin anah) bulunuyorsa, bu işareti otomatik olarak anahtara ait değerde 
     tanımlanmış emoji ile değiştirecek bir fonksiyon geliştirmek istiyorlar. ÖRNEK: Mesaj içinde ":)" 
     sembolü bulunursa mesajı alan kişi bu sembolü "🙂" olarak görecek. Burdan yola çıkarak 
     emojileriDonustur fonksiyonuna aşağıdakileri uygulayın.
@@ -189,9 +204,21 @@ var manav;
 			4. elde edilen string döndürülecek
  */
 
-function emojileriDonustur(/* kodlar buraya */) {
-  /* kodlar buraya */
-}
+      function emojileriDonustur(stringMessage, emojiNesne) {
+        for(let keys in emojiNesne){//nesne for in
+          const emojiDeger=emojiNesne[keys]//Emoji nesnesi keys değerini emojidegere atttık.
+          const büyükHarfliSayilar=keys.toLowerCase()
+          const küçükHarfliSayilar=keys.toUpperCase()
+          stringMessage=stringMessage.replaceAll(büyükHarfliSayilar,emojiDeger)
+          stringMessage=stringMessage.replaceAll(küçükHarfliSayilar,emojiDeger)
+        }
+        return stringMessage
+      }
+
+
+
+
+
 
 /*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
 function sa() {
